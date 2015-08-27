@@ -26,5 +26,8 @@
     
     <RoslynDiagnosticsAnalyzersSemanticVersion>1.1.1</RoslynDiagnosticsAnalyzersSemanticVersion>
     <RoslynDiagnosticsAnalyzersPreReleaseVersion>beta1</RoslynDiagnosticsAnalyzersPreReleaseVersion>
+    
+    <SystemGlobalizationAnalyzersSemanticVersion>1.0.0</SystemGlobalizationAnalyzersSemanticVersion>
+    <SystemGlobalizationAnalyzersPreReleaseVersion>beta1</SystemGlobalizationAnalyzersPreReleaseVersion>
   </PropertyGroup>
 </Project>
