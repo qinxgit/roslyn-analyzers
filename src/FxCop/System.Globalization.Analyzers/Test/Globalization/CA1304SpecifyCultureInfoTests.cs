@@ -2,14 +2,14 @@
 
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.UnitTests;
-using Xunit;   
+using Xunit;
 
 namespace System.Globalization.Analyzers.UnitTests
-{               
+{
     public sealed class CA1304SpecifyCultureInfoTests : DiagnosticAnalyzerTestBase
     {
         [Fact]
-        public void CA1304ShoudUseOverloadsWithExplicitCultureInfoParameterTests_String_CS()
+        public void CA1304CultureInfoParameterTests_String()
         {
             VerifyCSharp(@"
 using System;
@@ -33,10 +33,35 @@ sealed class C
 }",
             GetCA1304CSharpDefaultResultAt(9, 25, callee: "string.ToLower()", caller: "C.M(string, string)", preferred: "string.ToLower(System.Globalization.CultureInfo)"),
             GetCA1304CSharpDefaultResultAt(10, 25, callee: "string.ToUpper()", caller: "C.M(string, string)", preferred: "string.ToUpper(System.Globalization.CultureInfo)"));
-        } 
-        
+
+            VerifyBasic(@"
+Imports System
+Imports System.Globalization
+
+Public Module C
+    Public Sub M(strA As String, strB As String)
+        Dim strAld As String = strA.ToLower()
+        Dim strBud As String = strB.ToUpper()
+
+        ' The following calls are okay as far as CA1304 is concerned
+        Dim strAlc As String = strA.ToLower(CultureInfo.CurrentCulture)
+        Dim strBuc As String = strB.ToUpper(CultureInfo.InvariantCulture)
+        If ((strAld = strAlc) <> (strBud = strBuc)) Then
+            Console.WriteLine(""Oops"")
+        End If
+    End Sub
+End Module",
+            GetCA1304BasicDefaultResultAt(7, 32, callee: "Public Overloads Function ToLower() As String",
+                                                 caller: "Public Sub M(strA As String, strB As String)",
+                                                 preferred: "Public Overloads Function ToLower(culture As System.Globalization.CultureInfo) As String"),
+            GetCA1304BasicDefaultResultAt(8, 32, callee: "Public Overloads Function ToUpper() As String",
+                                                 caller: "Public Sub M(strA As String, strB As String)",
+                                                 preferred: "Public Overloads Function ToUpper(culture As System.Globalization.CultureInfo) As String"));
+
+        }
+
         [Fact]
-        public void CA1304ShoudUseOverloadsWithExplicitCultureInfoParameterTests_Misc_CS()
+        public void CA1304CultureInfoParameterTests_Misc()
         {
             VerifyCSharp(@"
 using System;
@@ -119,45 +144,13 @@ static class C
         }
     }
 }",
-            GetCA1304CSharpDefaultResultAt(12, 9, callee: "C.CultureInfoOverloads.M1(string, string)", 
-                                                  caller: "C.T(string, string)", 
+            GetCA1304CSharpDefaultResultAt(12, 9, callee: "C.CultureInfoOverloads.M1(string, string)",
+                                                  caller: "C.T(string, string)",
                                                   preferred: "C.CultureInfoOverloads.M1(string, string, System.Globalization.CultureInfo)"),
-            GetCA1304CSharpDefaultResultAt(13, 9, callee: "C.CultureInfoOverloads.M2(string, string)", 
-                                                  caller: "C.T(string, string)", 
+            GetCA1304CSharpDefaultResultAt(13, 9, callee: "C.CultureInfoOverloads.M2(string, string)",
+                                                  caller: "C.T(string, string)",
                                                   preferred: "C.CultureInfoOverloads.M2(System.Globalization.CultureInfo, string, string)"));
-        } 
-        
-        [Fact]
-        public void CA1304ShoudUseOverloadsWithExplicitCultureInfoParameterTests_String_VB()
-        {
-            VerifyBasic(@"
-Imports System
-Imports System.Globalization
 
-Public Module C
-    Public Sub M(strA As String, strB As String)
-        Dim strAld As String = strA.ToLower()
-        Dim strBud As String = strB.ToUpper()
-
-        ' The following calls are okay as far as CA1304 is concerned
-        Dim strAlc As String = strA.ToLower(CultureInfo.CurrentCulture)
-        Dim strBuc As String = strB.ToUpper(CultureInfo.InvariantCulture)
-        If ((strAld = strAlc) <> (strBud = strBuc)) Then
-            Console.WriteLine(""Oops"")
-        End If
-    End Sub
-End Module",
-            GetCA1304BasicDefaultResultAt(7, 32, callee: "Public Overloads Function ToLower() As String",
-                                                 caller: "Public Sub M(strA As String, strB As String)",
-                                                 preferred: "Public Overloads Function ToLower(culture As System.Globalization.CultureInfo) As String"),
-            GetCA1304BasicDefaultResultAt(8, 32, callee: "Public Overloads Function ToUpper() As String",
-                                                 caller: "Public Sub M(strA As String, strB As String)",
-                                                 preferred: "Public Overloads Function ToUpper(culture As System.Globalization.CultureInfo) As String"));
-        }
-        
-        [Fact]
-        public void CA1304ShoudUseOverloadsWithExplicitCultureInfoParameterTests_Misc_VB()
-        {
             VerifyBasic(@"
 Imports System
 Imports System.ComponentModel
@@ -229,12 +222,13 @@ Friend Module CultureInfoOverloads
         Console.WriteLine(String.Format(provider, format, content))
     End Sub
 End Module",
-            GetCA1304BasicDefaultResultAt(10, 9, callee: "Friend Sub M1(format As String, content As String)", 
-                                                 caller: "Public Sub M(f As String, s As String)", 
+            GetCA1304BasicDefaultResultAt(10, 9, callee: "Friend Sub M1(format As String, content As String)",
+                                                 caller: "Public Sub M(f As String, s As String)",
                                                  preferred: "Friend Sub M1(format As String, content As String, provider As System.Globalization.CultureInfo)"),
-            GetCA1304BasicDefaultResultAt(11, 9, callee: "Friend Sub M2(format As String, content As String)", 
-                                                 caller: "Public Sub M(f As String, s As String)", 
-                                                 preferred: "Friend Sub M2(provider As System.Globalization.CultureInfo, format As String, content As String)")); 
+            GetCA1304BasicDefaultResultAt(11, 9, callee: "Friend Sub M2(format As String, content As String)",
+                                                 caller: "Public Sub M(f As String, s As String)",
+                                                 preferred: "Friend Sub M2(provider As System.Globalization.CultureInfo, format As String, content As String)"));
+
         }
 
         protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer()
