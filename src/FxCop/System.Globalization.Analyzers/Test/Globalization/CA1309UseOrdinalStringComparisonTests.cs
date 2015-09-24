@@ -9,7 +9,6 @@ namespace System.Globalization.Analyzers.UnitTests
 {
     public sealed class CA1309UseOrdinalStringComparisonTests : DiagnosticAnalyzerTestBase
     {
-#pragma warning disable CS0219
 
         [Fact]
         public void CA1309StringEqualsInvarianCulture()
@@ -1020,9 +1019,6 @@ End Module",
                                                  "StringComparer.InvariantCultureIgnoreCase",
                                                  "Public Overloads Sub New(comparer As System.Collections.Generic.IEqualityComparer(Of String))"));
         }
-
-#pragma warning restore CS0219
-
 
         protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer()
         {

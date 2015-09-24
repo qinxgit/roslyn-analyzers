@@ -442,7 +442,8 @@ End Module",
         [Fact]
         public void CA1305StringFormat()
         {
-            VerifyCSharp(@"using System;
+            VerifyCSharp(@"
+using System;
 using System.Globalization;
 using System.Threading;
 
@@ -455,11 +456,11 @@ sealed class C
     }
  
 }",
-            GetCA1305CSharpDefaultResultAt(9, 23, MessageUICultureString,
+            GetCA1305CSharpDefaultResultAt(10, 23, MessageUICultureString,
                                                   "C.M(string, string)",
                                                   "Thread.CurrentThread.CurrentUICulture",
                                                   "string.Format(System.IFormatProvider, string, object)"),
-            GetCA1305CSharpDefaultResultAt(10, 23, MessageUICultureString,
+            GetCA1305CSharpDefaultResultAt(11, 23, MessageUICultureString,
                                                   "C.M(string, string)",
                                                   "CultureInfo.InstalledUICulture",
                                                   "string.Format(System.IFormatProvider, string, object, object)"));
@@ -490,7 +491,8 @@ End Module
         [Fact]
         public void CA1305IFormatProvider_LeadingCultureInfo()
         {
-            VerifyCSharp(@"using System;
+            VerifyCSharp(@"
+using System;
 using System.Globalization;
 using System.Threading;
 
@@ -538,11 +540,11 @@ sealed class C
         }
     }
 }",
-            GetCA1305CSharpDefaultResultAt(11, 16, MessageUICultureString,
+            GetCA1305CSharpDefaultResultAt(12, 16, MessageUICultureString,
                                                   "C.M(string, string)",
                                                   "CultureInfo.CurrentUICulture",
                                                   "C.IFormatProviderOverloads.LeadingIFormatProviderReturningString(System.IFormatProvider, string)"),
-            GetCA1305CSharpDefaultResultAt(13, 9, MessageUICulture,
+            GetCA1305CSharpDefaultResultAt(14, 9, MessageUICulture,
                                                   "C.M(string, string)",
                                                   "CultureInfo.CurrentUICulture",
                                                   "C.IFormatProviderOverloads.LeadingIFormatProvider(System.IFormatProvider, string)"));
@@ -595,7 +597,8 @@ End Module",
         [Fact]
         public void CA1305IFormatProvider_TrailingCultureInfo()
         {
-            VerifyCSharp(@"using System;
+            VerifyCSharp(@"
+using System;
 using System.Globalization;
 using System.Threading;
 
@@ -647,11 +650,11 @@ sealed class C
         }
     }
 }",
-           GetCA1305CSharpDefaultResultAt(12, 16, MessageUICultureString,
+           GetCA1305CSharpDefaultResultAt(13, 16, MessageUICultureString,
                                                   "C.M(string, string)",
                                                   "CultureInfo.CurrentUICulture",
                                                   "C.IFormatProviderOverloads.TrailingIFormatProviderReturningString(string, System.IFormatProvider)"),
-           GetCA1305CSharpDefaultResultAt(14, 9, MessageUICulture,
+           GetCA1305CSharpDefaultResultAt(15, 9, MessageUICulture,
                                                   "C.M(string, string)",
                                                   "CultureInfo.CurrentUICulture",
                                                   "C.IFormatProviderOverloads.TrailingIFormatProvider(string, System.IFormatProvider)"));
@@ -713,7 +716,8 @@ End Module",
         [Fact]
         public void CA1305IFormatProvider_LeadingReturningString()
         {
-            VerifyCSharp(@"using System;
+            VerifyCSharp(@"
+using System;
 using System.Globalization;
 using System.Threading;
 
@@ -761,19 +765,19 @@ sealed class C
         }
     }
 }",
-           GetCA1305CSharpDefaultResultAt(10, 16, MessageUICultureString,
+           GetCA1305CSharpDefaultResultAt(11, 16, MessageUICultureString,
                                                   "C.M(string, string)",
                                                   "Thread.CurrentThread.CurrentUICulture",
                                                   "C.IFormatProviderOverloads.LeadingIFormatProviderReturningString(System.IFormatProvider, string)"),
-           GetCA1305CSharpDefaultResultAt(11, 9, MessageUICulture,
+           GetCA1305CSharpDefaultResultAt(12, 9, MessageUICulture,
                                                   "C.M(string, string)",
                                                   "Thread.CurrentThread.CurrentUICulture",
                                                   "C.IFormatProviderOverloads.LeadingIFormatProvider(System.IFormatProvider, string)"),
-           GetCA1305CSharpDefaultResultAt(12, 16, MessageUICultureString,
+           GetCA1305CSharpDefaultResultAt(13, 16, MessageUICultureString,
                                                   "C.M(string, string)",
                                                   "CultureInfo.InstalledUICulture",
                                                   "C.IFormatProviderOverloads.LeadingIFormatProviderReturningString(System.IFormatProvider, string)"),
-           GetCA1305CSharpDefaultResultAt(13, 9, MessageUICulture,
+           GetCA1305CSharpDefaultResultAt(14, 9, MessageUICulture,
                                                   "C.M(string, string)",
                                                   "CultureInfo.InstalledUICulture",
                                                   "C.IFormatProviderOverloads.LeadingIFormatProvider(System.IFormatProvider, string)"));
@@ -841,7 +845,8 @@ End Module",
         [Fact]
         public void CA1305IFormatProvider_TrailingReturningString()
         {
-            VerifyCSharp(@"using System;
+            VerifyCSharp(@"
+using System;
 using System.Globalization;
 using System.Threading;
 
@@ -894,19 +899,19 @@ sealed class C
         }
     }
 }",
-           GetCA1305CSharpDefaultResultAt(10, 16, MessageUICultureString,
+           GetCA1305CSharpDefaultResultAt(11, 16, MessageUICultureString,
                                                   "C.M(string, string)",
                                                   "Thread.CurrentThread.CurrentUICulture",
                                                   "C.IFormatProviderOverloads.TrailingIFormatProviderReturningString(string, System.IFormatProvider)"),
-           GetCA1305CSharpDefaultResultAt(11, 9, MessageUICulture,
+           GetCA1305CSharpDefaultResultAt(12, 9, MessageUICulture,
                                                   "C.M(string, string)",
                                                   "Thread.CurrentThread.CurrentUICulture",
                                                   "C.IFormatProviderOverloads.TrailingIFormatProvider(string, System.IFormatProvider)"),
-           GetCA1305CSharpDefaultResultAt(12, 16, MessageUICultureString,
+           GetCA1305CSharpDefaultResultAt(13, 16, MessageUICultureString,
                                                   "C.M(string, string)",
                                                   "CultureInfo.InstalledUICulture",
                                                   "C.IFormatProviderOverloads.TrailingIFormatProviderReturningString(string, System.IFormatProvider)"),
-          GetCA1305CSharpDefaultResultAt(13, 9, MessageUICulture,
+          GetCA1305CSharpDefaultResultAt(14, 9, MessageUICulture,
                                                   "C.M(string, string)",
                                                   "CultureInfo.InstalledUICulture",
                                                   "C.IFormatProviderOverloads.TrailingIFormatProvider(string, System.IFormatProvider)"));
