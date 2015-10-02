@@ -15,52 +15,61 @@ namespace System.Globalization.Analyzers
         public const string RuleId1304 = "CA1304";
         public const string RuleId1305 = "CA1305";
         public const string RuleId1307 = "CA1307";
-        public const string RuleId1309 = "CA1309";          
+        public const string RuleId1309 = "CA1309";
 
         internal static readonly DiagnosticDescriptor SpecifyCultureInfoRule = CreateDiagnosticDescriptor(RuleId1304,
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyCultureInfoTitle)),
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyCultureInfoDiagnosis)),
-                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyCultureInfoDescription)));
+                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyCultureInfoDescription)),
+                                                                                                            "https://msdn.microsoft.com/en-us/library/ms182189.aspx");
 
         internal static readonly DiagnosticDescriptor SpecifyIFormatProviderAlternateStringRule = CreateDiagnosticDescriptor(RuleId1305,
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderTitle)),
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderDiagnosisAlternateString)),
-                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderDescription)));
+                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderDescription)),
+                                                                                                            "https://msdn.microsoft.com/en-us/library/ms182190.aspx");
 
         internal static readonly DiagnosticDescriptor SpecifyIFormatProviderAlternateRule = CreateDiagnosticDescriptor(RuleId1305,
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderTitle)),
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderDiagnosisAlternate)),
-                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderDescription)));
+                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderDescription)),
+                                                                                                            "https://msdn.microsoft.com/en-us/library/ms182190.aspx");
 
         internal static readonly DiagnosticDescriptor SpecifyIFormatProviderUICultureStringRule = CreateDiagnosticDescriptor(RuleId1305,
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderTitle)),
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderDiagnosisUICultureString)),
-                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderDescription)));
+                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderDescription)),
+                                                                                                            "https://msdn.microsoft.com/en-us/library/ms182190.aspx");
 
         internal static readonly DiagnosticDescriptor SpecifyIFormatProviderUICultureRule = CreateDiagnosticDescriptor(RuleId1305,
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderTitle)),
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderDiagnosisUICulture)),
-                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderDescription)));
+                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyIFormatProviderDescription)),
+                                                                                                            "https://msdn.microsoft.com/en-us/library/ms182190.aspx");
 
         internal static readonly DiagnosticDescriptor SpecifyStringComparisonRule = CreateDiagnosticDescriptor(RuleId1307,
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyStringComparisonTitle)),
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyStringComparisonDiagnosis)),
-                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyStringComparisonDescription)));
+                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.SpecifyStringComparisonDescription)),
+                                                                                                            "https://msdn.microsoft.com/en-us/library/bb386080.aspx");
 
         internal static readonly DiagnosticDescriptor UseOrdinalStringComparisonRule = CreateDiagnosticDescriptor(RuleId1309,
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.UseOrdinalStringComparisonTitle)),
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.UseOrdinalStringComparisonDiagnosis)),
-                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.UseOrdinalStringComparisonDescription)));
+                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.UseOrdinalStringComparisonDescription)),
+                                                                                                            "https://msdn.microsoft.com/en-us/library/bb385972.aspx");
 
         internal static readonly DiagnosticDescriptor UseOrdinalStringComparerRule = CreateDiagnosticDescriptor(RuleId1309,
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.UseOrdinalStringComparisonTitle)),
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.UseOrdinalStringComparerDiagnosis)),
-                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.UseOrdinalStringComparisonDescription)));
+                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.UseOrdinalStringComparisonDescription)),
+                                                                                                            "https://msdn.microsoft.com/en-us/library/bb385972.aspx");
 
         internal static readonly DiagnosticDescriptor UseOrdinalStringComparisonAsDefaultRule = CreateDiagnosticDescriptor(RuleId1309,
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.UseOrdinalStringComparisonTitle)),
                                                                                                             DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.UseOrdinalStringComparisonDefaultDiagnosis)),
-                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.UseOrdinalStringComparisonDescription)));
+                                                                                                            DiagnosticHelpers.GetLocalizableResourceString(nameof(SystemGlobalizationAnalyzersResources.UseOrdinalStringComparisonDescription)),
+                                                                                                            "https://msdn.microsoft.com/en-us/library/bb385972.aspx");
 
         private static readonly ImmutableArray<DiagnosticDescriptor> s_supportedDiagnostics =
             ImmutableArray.Create(SpecifyCultureInfoRule,
